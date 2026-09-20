@@ -63,6 +63,11 @@
   --shadow-button: 0 10px 24px rgb(93 87 217 / 0.22);
   --shadow-overlay: 0 24px 64px rgb(25 34 59 / 0.2);
 
+  --spacing-section: clamp(4rem, 8vw, 6rem);
+  --spacing-container: 73.75rem;
+
+  --duration-fast: 150ms;
+  --duration-standard: 200ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 

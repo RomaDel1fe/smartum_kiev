@@ -2,6 +2,7 @@
 
 import { Button as BaseButton } from "@base-ui/react/button";
 import type { ComponentProps } from "react";
+import { cn } from "./utils";
 
 const variants = {
   primary:
@@ -39,7 +40,12 @@ export function Button({
   return (
     <BaseButton
       type={type}
-      className={`inline-flex shrink-0 items-center justify-center gap-2 font-bold transition-colors outline-none focus-visible:ring-3 focus-visible:ring-focus/30 disabled:pointer-events-none disabled:opacity-50 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={cn(
+        "inline-flex shrink-0 items-center justify-center gap-2 font-bold transition-[color,background-color,border-color,box-shadow,transform] duration-200 outline-none focus-visible:ring-3 focus-visible:ring-focus/30 disabled:pointer-events-none disabled:opacity-50",
+        variants[variant],
+        sizes[size],
+        className,
+      )}
       {...props}
     />
   );
