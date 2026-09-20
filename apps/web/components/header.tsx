@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { CONTACT_PHONE } from "@/data/site-config";
 
 const nav = [
   { href: "/courses", label: "Курси" },
@@ -10,19 +12,40 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="logo" href="/" aria-label="SMARTUM Київ — на головну">
-          <span className="logo__mark">S</span><span>SMARTUM<small>КИЇВ</small></span>
+        <Link className="brand-logo brand-logo--header" href="/" aria-label="SMARTUM Київ — на головну">
+          <Image
+            src="/smartum-logo.png"
+            width={1738}
+            height={905}
+            alt="SMARTUM — academy of mental arithmetic"
+            priority
+          />
         </Link>
         <nav className="desktop-nav" aria-label="Головна навігація">
           {nav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
         </nav>
         <div className="header-actions">
-          <a className="phone" href="tel:+380000000000">+38 (000) 000-00-00</a>
+          <a className="phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
           <Link className="button button--small button--primary" href="/contacts#trial">Пробне заняття</Link>
         </div>
-        <details className="mobile-menu">
-          <summary aria-label="Відкрити меню">Меню</summary>
-          <nav>{nav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</nav>
+        <details className="navigation-menu">
+          <summary className="navigation-menu__toggle">
+            <span className="sr-only">Відкрити або закрити меню</span>
+            <span className="menu-icon" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </summary>
+          <div className="navigation-menu__panel">
+            <nav aria-label="Мобільна навігація">
+              {nav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+            </nav>
+            <div className="navigation-menu__contacts">
+              <a className="navigation-menu__phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
+              <Link className="button button--primary" href="/contacts#trial">Пробне заняття</Link>
+            </div>
+          </div>
         </details>
       </div>
     </header>

@@ -1,14 +1,43 @@
+import Image from "next/image";
 import Link from "next/link";
+import { CONTACT_EMAIL, CONTACT_PHONE } from "@/data/site-config";
+
+const footerNav = [
+  { href: "/courses", label: "Курси" },
+  { href: "/about", label: "Про академію" },
+  { href: "/contacts", label: "Контакти" },
+];
 
 export function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
-        <div><div className="logo logo--light"><span className="logo__mark">S</span><span>SMARTUM<small>КИЇВ</small></span></div><p>Академія розвитку інтелекту для дітей від 5 до 16 років.</p></div>
-        <div><h3>Навігація</h3><Link href="/courses">Курси</Link><Link href="/about">Про академію</Link><Link href="/contacts">Контакти</Link></div>
-        <div><h3>Контакти</h3><a href="tel:+380000000000">+38 (000) 000-00-00</a><a href="mailto:kyiv@smartum.com.ua">kyiv@smartum.com.ua</a><span>Київ, Україна</span></div>
+        <div className="footer-about">
+          <Link className="brand-logo brand-logo--footer" href="/" aria-label="SMARTUM Київ — на головну">
+            <Image
+              src="/smartum-logo.png"
+              width={1738}
+              height={905}
+              alt="SMARTUM — academy of mental arithmetic"
+            />
+          </Link>
+          <p>Академія розвитку інтелекту для дітей від 5 до 16 років.</p>
+        </div>
+        <nav className="footer-column" aria-label="Навігація у футері">
+          <h2>Навігація</h2>
+          {footerNav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+        </nav>
+        <address className="footer-column">
+          <h2>Контакти</h2>
+          <a href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
+          <a href={CONTACT_EMAIL.href}>{CONTACT_EMAIL.label}</a>
+          <span>Київ, Україна</span>
+        </address>
       </div>
-      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} SMARTUM Київ</span><span>Політика конфіденційності</span></div>
+      <div className="shell footer-bottom">
+        <span>© {new Date().getFullYear()} SMARTUM Київ</span>
+        <span>Політика конфіденційності</span>
+      </div>
     </footer>
   );
 }
