@@ -1,0 +1,25 @@
+{
+  "name": "smartum-kiev",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=@smartum/web",
+    "dev:web": "npm run dev --workspace=@smartum/web",
+    "dev:admin": "npm run dev --workspace=@smartum/admin",
+    "dev:api": "npm run start:dev --workspace=@smartum/api",
+    "build": "npm run build --workspace=@smartum/contracts && npm run build --workspace=@smartum/web && npm run build --workspace=@smartum/admin && npm run build --workspace=@smartum/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run build --workspace=@smartum/contracts && npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  },
+  "packageManager": "npm@12.0.2"
+}

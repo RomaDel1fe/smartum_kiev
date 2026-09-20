@@ -1,0 +1,31 @@
+{
+  "name": "@smartum/web",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@smartum/ui": "*",
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "26.6.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "10.11.0",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "4.3.3"
+  },
+  "type": "module"
+}

@@ -1,0 +1,84 @@
+/* SMARTUM design tokens. This is the single source of truth for web and admin. */
+:root {
+  color-scheme: light;
+
+  --ds-background: #ffffff;
+  --ds-foreground: #19223b;
+  --ds-muted-foreground: #687087;
+  --ds-surface: #ffffff;
+  --ds-surface-subtle: #f5f6fb;
+  --ds-surface-muted: #eceef6;
+  --ds-border: #e5e7f0;
+
+  --ds-primary: #5d57d9;
+  --ds-primary-hover: #514bc9;
+  --ds-primary-active: #4540bd;
+  --ds-primary-foreground: #ffffff;
+  --ds-accent: #d8f15a;
+  --ds-accent-foreground: #19223b;
+
+  --ds-success: #25855a;
+  --ds-warning: #d98b19;
+  --ds-danger: #d83b4f;
+  --ds-danger-hover: #c52f42;
+  --ds-danger-active: #ae293a;
+  --ds-danger-foreground: #ffffff;
+  --ds-focus: #5d57d9;
+}
+
+@theme inline {
+  --color-background: var(--ds-background);
+  --color-foreground: var(--ds-foreground);
+  --color-muted-foreground: var(--ds-muted-foreground);
+  --color-surface: var(--ds-surface);
+  --color-surface-subtle: var(--ds-surface-subtle);
+  --color-surface-muted: var(--ds-surface-muted);
+  --color-border: var(--ds-border);
+
+  --color-primary: var(--ds-primary);
+  --color-primary-hover: var(--ds-primary-hover);
+  --color-primary-active: var(--ds-primary-active);
+  --color-primary-foreground: var(--ds-primary-foreground);
+  --color-accent: var(--ds-accent);
+  --color-accent-foreground: var(--ds-accent-foreground);
+  --color-success: var(--ds-success);
+  --color-warning: var(--ds-warning);
+  --color-danger: var(--ds-danger);
+  --color-danger-hover: var(--ds-danger-hover);
+  --color-danger-active: var(--ds-danger-active);
+  --color-danger-foreground: var(--ds-danger-foreground);
+  --color-focus: var(--ds-focus);
+
+  --font-sans: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --font-display: "Trebuchet MS", "Avenir Next", sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --shadow-card: 0 20px 45px rgb(25 34 59 / 0.1);
+  --shadow-button: 0 10px 24px rgb(93 87 217 / 0.22);
+  --shadow-overlay: 0 24px 64px rgb(25 34 59 / 0.2);
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
