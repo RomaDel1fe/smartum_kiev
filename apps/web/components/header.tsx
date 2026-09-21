@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_PHONE } from "@/data/site-config";
+import { ActiveNavLink } from "@/components/active-nav-link";
 
 const nav = [
   { href: "/courses", label: "Курси" },
@@ -22,7 +23,7 @@ export function Header() {
           />
         </Link>
         <nav className="desktop-nav" aria-label="Головна навігація">
-          {nav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+          {nav.map((item) => <ActiveNavLink href={item.href} key={item.href}>{item.label}</ActiveNavLink>)}
         </nav>
         <div className="header-actions">
           <a className="phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
@@ -39,7 +40,7 @@ export function Header() {
           </summary>
           <div className="navigation-menu__panel">
             <nav aria-label="Мобільна навігація">
-              {nav.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+              {nav.map((item) => <ActiveNavLink href={item.href} key={item.href}>{item.label}</ActiveNavLink>)}
             </nav>
             <div className="navigation-menu__contacts">
               <a className="navigation-menu__phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
