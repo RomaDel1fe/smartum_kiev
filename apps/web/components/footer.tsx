@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_EMAIL, CONTACT_PHONE } from "@/data/site-config";
+import { assetPath } from "@/lib/asset-path";
 
 const footerNav = [
   { href: "/courses", label: "Курси" },
@@ -15,7 +16,7 @@ export function Footer() {
         <div className="footer-about">
           <Link className="brand-logo brand-logo--footer" href="/" aria-label="SMARTUM Київ — на головну">
             <Image
-              src="/smartum-logo.png"
+              src={assetPath("/smartum-logo.png")}
               width={1738}
               height={905}
               alt="SMARTUM — academy of mental arithmetic"

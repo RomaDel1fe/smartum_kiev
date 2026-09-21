@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CONTACT_PHONE } from "@/data/site-config";
 import { ActiveNavLink } from "@/components/active-nav-link";
 import { TrialDialogTrigger } from "@/components/trial-dialog";
+import { assetPath } from "@/lib/asset-path";
 
 const nav = [
   { href: "/courses", label: "Курси" },
@@ -16,7 +17,7 @@ export function Header() {
       <div className="shell header-inner">
         <Link className="brand-logo brand-logo--header" href="/" aria-label="SMARTUM Київ — на головну">
           <Image
-            src="/smartum-logo.png"
+            src={assetPath("/smartum-logo.png")}
             width={1738}
             height={905}
             alt="SMARTUM — academy of mental arithmetic"

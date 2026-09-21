@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Teacher } from "@/data/teachers";
+import { assetPath } from "@/lib/asset-path";
 
 type TeacherCardProps = {
   teacher: Teacher;
@@ -13,7 +14,7 @@ export function TeacherCard({ teacher, showBio = false }: TeacherCardProps) {
     <article className={className}>
       <div className="teacher-card__photo">
         <Image
-          src={teacher.photoUrl}
+          src={assetPath(teacher.photoUrl)}
           alt={`Викладачка ${teacher.name}`}
           width={480}
           height={560}
