@@ -1,3 +1,76 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title:"Про академію" };
-export default function AboutPage(){return <><section className="page-hero shell"><span className="eyebrow">Про SMARTUM</span><h1>Середовище, де дитина не боїться помилятися</h1><p>Поєднуємо міжнародні методики, турботливих викладачів і практику, що перетворює навчання на особисте відкриття.</p></section><section className="content-grid shell"><article className="content-card"><h2>Наш підхід</h2><p>Ми підтримуємо природну допитливість дитини. Завдання викладача — не дати готову відповідь, а допомогти знайти власний шлях до неї.</p></article><article className="content-card"><h2>Для батьків</h2><p>Ви отримуєте зрозумілий зворотний зв’язок про прогрес, сильні сторони та навички, які варто підтримати вдома.</p></article></section></>}
+import Link from "next/link";
+import { TeacherCard } from "@/components/teacher-card";
+import { teachers } from "@/data/teachers";
+
+export const metadata: Metadata = {
+  title: "Про академію",
+  description: "Підхід, методики та викладачі академії розвитку інтелекту SMARTUM у Києві.",
+};
+
+const principles = [
+  ["01", "Індивідуальний темп", "Викладач враховує вік, стартові навички та особливості дитини, щоб навчання було посильним."],
+  ["02", "Гра зі змістом", "Вправи й розвивальні ігри підтримують інтерес і допомагають засвоювати складне без механічного заучування."],
+  ["03", "Практика між заняттями", "Онлайн-платформа та авторські матеріали допомагають закріплювати навички регулярно."],
+  ["04", "Помітний прогрес", "Ми відстежуємо динаміку навчання, а батьки отримують зрозумілий зворотний зв’язок про сильні сторони дитини."],
+] as const;
+
+export default function AboutPage() {
+  return (
+    <main className="about-page">
+      <section className="about-hero shell">
+        <div className="about-hero__copy">
+          <span className="eyebrow">Про SMARTUM</span>
+          <h1>Допомагаємо дітям розкривати свій потенціал</h1>
+          <p className="lead">
+            SMARTUM — міжнародна академія розвитку інтелекту. У Києві ми створюємо
+            простір, де дитина вчиться мислити, не боїться помилятися і бачить власний прогрес.
+          </p>
+          <div className="hero__actions">
+            <Link className="button button--primary" href="/contacts#trial">Записатися на пробне</Link>
+            <Link className="button button--ghost" href="/courses">Переглянути курси</Link>
+          </div>
+        </div>
+        <div className="about-hero__panel" aria-label="SMARTUM у цифрах">
+          <div className="about-hero__mark">∞</div>
+          <div className="about-stat about-stat--large"><strong>28</strong><span>країн, де працює SMARTUM</span></div>
+          <div className="about-stat"><strong>5–16</strong><span>років — вік наших учнів</span></div>
+          <div className="about-stat"><strong>100+</strong><span>розвивальних ігор</span></div>
+        </div>
+      </section>
+
+      <section className="section section--soft">
+        <div className="shell about-mission">
+          <div><span className="eyebrow">Наша місія</span><h2>Навички для життя, а не лише для уроку</h2></div>
+          <div className="about-mission__copy"><p>Даємо дітям інструменти для роботи з інформацією та новими знаннями, які можна застосовувати у навчанні та щоденному житті.</p></div>
+        </div>
+      </section>
+
+      <section className="section shell">
+        <div className="section-heading about-section-heading">
+          <div><span className="eyebrow">Як ми навчаємо</span><h2>Продумана система на кожному етапі</h2></div>
+          <p className="lead">Поєднуємо роботу з викладачем, авторські матеріали та зручні цифрові інструменти.</p>
+        </div>
+        <div className="about-principles">
+          {principles.map(([number, title, text]) => <article className="about-principle" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </section>
+
+      <section className="section about-team" id="team">
+        <div className="shell">
+          <div className="section-heading about-section-heading"><div><span className="eyebrow">Наша команда</span><h2>Викладачі SMARTUM</h2></div></div>
+          <div className="about-team__grid">
+            {teachers.map((teacher) => <TeacherCard teacher={teacher} key={teacher.name} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section shell">
+        <div className="trial-banner">
+          <div><span className="eyebrow eyebrow--light">Почнімо зі знайомства</span><h2>Дайте дитині можливість спробувати SMARTUM</h2></div>
+          <Link className="button button--light" href="/contacts#trial">Записатися на пробне</Link>
+        </div>
+      </section>
+    </main>
+  );
+}
