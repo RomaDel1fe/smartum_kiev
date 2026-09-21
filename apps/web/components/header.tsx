@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_PHONE } from "@/data/site-config";
 import { ActiveNavLink } from "@/components/active-nav-link";
+import { TrialDialogTrigger } from "@/components/trial-dialog";
 
 const nav = [
   { href: "/courses", label: "Курси" },
@@ -27,7 +28,7 @@ export function Header() {
         </nav>
         <div className="header-actions">
           <a className="phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
-          <Link className="button button--small button--primary" href="/contacts#trial">Пробне заняття</Link>
+          <TrialDialogTrigger className="button button--small button--primary">Пробне заняття</TrialDialogTrigger>
         </div>
         <details className="navigation-menu">
           <summary className="navigation-menu__toggle">
@@ -44,7 +45,7 @@ export function Header() {
             </nav>
             <div className="navigation-menu__contacts">
               <a className="navigation-menu__phone" href={CONTACT_PHONE.href}>{CONTACT_PHONE.label}</a>
-              <Link className="button button--primary" href="/contacts#trial">Пробне заняття</Link>
+              <TrialDialogTrigger className="button button--primary">Пробне заняття</TrialDialogTrigger>
             </div>
           </div>
         </details>

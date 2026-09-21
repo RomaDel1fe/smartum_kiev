@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CourseCard } from "@/components/course-card";
 import { courses } from "@/data/courses";
+import { TrialDialogTrigger } from "@/components/trial-dialog";
 
 export default function HomePage() {
   return (
@@ -14,9 +15,9 @@ export default function HomePage() {
             за перевіреними методиками SMARTUM.
           </p>
           <div className="hero__actions">
-            <Link className="button button--primary" href="/contacts#trial">
+            <TrialDialogTrigger className="button button--primary">
               Записатися на пробне заняття
-            </Link>
+            </TrialDialogTrigger>
             <Link className="button button--ghost" href="/courses">
               Обрати курс
             </Link>
@@ -75,7 +76,7 @@ export default function HomePage() {
             <span className="eyebrow eyebrow--light">Почніть зі знайомства</span>
             <h2>Підберемо курс під інтереси та вік вашої дитини</h2>
           </div>
-          <Link className="button button--light" href="/contacts#trial">Записатися на пробне</Link>
+          <TrialDialogTrigger className="button button--light">Записатися на пробне</TrialDialogTrigger>
         </div>
       </section>
     </>

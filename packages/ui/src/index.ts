@@ -23,3 +23,4 @@ export { Heading, Text, type HeadingProps, type TextProps } from "./typography";
 // Complex primitives stay behind the design-system package boundary.
 // Product code should never import Base UI directly.
 export { Dialog } from "@base-ui/react/dialog";
+export { Select } from "@base-ui/react/select";

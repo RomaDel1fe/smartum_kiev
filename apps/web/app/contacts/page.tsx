@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = { title:"Контакти" };
 import { CONTACT_EMAIL, CONTACT_PHONE } from "@/data/site-config";
+import { TrialForm } from "@/components/trial-form";
 
 export default function ContactsPage() {
   return (
@@ -20,23 +21,11 @@ export default function ContactsPage() {
             <span>Пн–Сб, 09:00–19:00</span>
           </div>
         </article>
-        <form className="trial-form" id="trial">
-          <h2>Запис на пробне заняття</h2>
-          <p>Форма підготовлена для майбутнього підключення до API.</p>
-          <label>
-            Ім’я батька або матері
-            <input name="parentName" placeholder="Ваше ім’я" />
-          </label>
-          <label>
-            Телефон
-            <input name="phone" type="tel" placeholder="+38 (___) ___-__-__" />
-          </label>
-          <label className="form-wide">
-            Вік дитини та побажання
-            <textarea name="message" placeholder="Наприклад: 8 років, цікавить швидкочитання" />
-          </label>
-          <button className="button button--primary form-wide" type="button">Надіслати заявку</button>
-        </form>
+        <div id="trial">
+          <h2 className="contact-form-title">Запис на пробне заняття</h2>
+          <p className="contact-form-description">Залиште контакти — ми допоможемо з програмою та розкладом.</p>
+          <TrialForm />
+        </div>
       </section>
     </>
   );

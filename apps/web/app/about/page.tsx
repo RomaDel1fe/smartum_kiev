@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TeacherCard } from "@/components/teacher-card";
 import { teachers } from "@/data/teachers";
+import { TrialDialogTrigger } from "@/components/trial-dialog";
 
 export const metadata: Metadata = {
   title: "Про академію",
@@ -27,7 +28,7 @@ export default function AboutPage() {
             простір, де дитина вчиться мислити, не боїться помилятися і бачить власний прогрес.
           </p>
           <div className="hero__actions">
-            <Link className="button button--primary" href="/contacts#trial">Записатися на пробне</Link>
+            <TrialDialogTrigger className="button button--primary">Записатися на пробне</TrialDialogTrigger>
             <Link className="button button--ghost" href="/courses">Переглянути курси</Link>
           </div>
         </div>
@@ -68,7 +69,7 @@ export default function AboutPage() {
       <section className="section shell">
         <div className="trial-banner">
           <div><span className="eyebrow eyebrow--light">Почнімо зі знайомства</span><h2>Дайте дитині можливість спробувати SMARTUM</h2></div>
-          <Link className="button button--light" href="/contacts#trial">Записатися на пробне</Link>
+          <TrialDialogTrigger className="button button--light">Записатися на пробне</TrialDialogTrigger>
         </div>
       </section>
     </main>

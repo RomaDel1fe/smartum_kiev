@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { TrialDialogProvider } from "@/components/trial-dialog";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +16,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="uk" data-scroll-behavior="smooth">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <TrialDialogProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </TrialDialogProvider>
       </body>
     </html>
   );

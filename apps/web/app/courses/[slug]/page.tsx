@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { CourseSubheader } from "@/components/course-subheader";
 import { TeacherCard } from "@/components/teacher-card";
 import { publishedCourses } from "@/data/courses";
+import { TrialDialogTrigger } from "@/components/trial-dialog";
 
 export function generateStaticParams() { return publishedCourses.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -19,7 +19,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   if (!course) notFound();
   return <div className="course-page" style={{ "--course-accent": course.color } as CSSProperties}>
     <CourseSubheader courseTitle={course.title}/>
-    <section className="page-hero course-hero shell" id="course-hero"><span className="course-hero__symbol" aria-hidden="true">{course.symbol}</span><span className="eyebrow">{course.information.eyebrow}</span><h1>{course.title}</h1><p>{course.information.fullDescription}</p><div className="hero__actions course-hero__actions"><Link className="button button--primary" href="/contacts#trial">Записатися на пробне</Link></div></section>
+    <section className="page-hero course-hero shell" id="course-hero"><span className="course-hero__symbol" aria-hidden="true">{course.symbol}</span><span className="eyebrow">{course.information.eyebrow}</span><h1>{course.title}</h1><p>{course.information.fullDescription}</p><div className="hero__actions course-hero__actions"><TrialDialogTrigger className="button button--primary" courseTitle={course.title}>Записатися на пробне</TrialDialogTrigger></div></section>
     <section className="content-grid shell"><article className="content-card"><h2>Що розвиваємо</h2><ul>{course.result.map((item) => <li key={item}>{item}</li>)}</ul></article><article className="content-card"><h2>Програма курсу</h2><ul>{course.information.program.map((item) => <li key={item}>{item}</li>)}</ul></article></section>
     {course.learningFormats.length > 0 && <section className="course-section shell"><span className="eyebrow">Формат навчання</span><h2>Як проходять заняття</h2><div className="course-detail-grid">{course.learningFormats.map((format) => <article className="content-card" key={format.title}><h3>{format.title}</h3><p>{format.description}</p>{format.durationMinutes && <p><strong>{format.durationMinutes} хвилин</strong></p>}{format.groupSize && <p>{format.groupSize}</p>}</article>)}</div></section>}
     {course.teachers.length > 0 && <section className="course-section shell"><span className="eyebrow">Команда</span><h2>Викладачі курсу</h2><div className="course-detail-grid course-teacher-grid">{course.teachers.map((teacher) => <TeacherCard teacher={teacher} showBio key={teacher.name} />)}</div></section>}

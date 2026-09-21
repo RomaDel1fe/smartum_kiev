@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { TrialDialogTrigger } from "@/components/trial-dialog";
 
 const DESKTOP_HEADER_HEIGHT = 94;
 const MOBILE_HEADER_HEIGHT = 82;
@@ -33,7 +33,7 @@ export function CourseSubheader({ courseTitle }: { courseTitle: string }) {
     <aside className={`course-subheader${isVisible ? " course-subheader--visible" : ""}`} aria-label={`Навігація курсу ${courseTitle}`} aria-hidden={!isVisible}>
       <div className="course-subheader__inner shell">
         <span className="course-subheader__title">{courseTitle}</span>
-        <Link className="button button--primary button--small" href="/contacts#trial" tabIndex={isVisible ? undefined : -1}>Записатися на пробне</Link>
+        <TrialDialogTrigger className="button button--primary button--small" courseTitle={courseTitle} tabIndex={isVisible ? undefined : -1}>Записатися на пробне</TrialDialogTrigger>
       </div>
     </aside>
   );
