@@ -7,4 +7,99 @@ datasource db {
   provider = "postgresql"
 }
 
-// Domain models will be added only after the content model is approved.
+model Course {
+  id               String              @id @default(cuid())
+  slug             String              @unique
+  title            String
+  age              String
+  shortDescription String
+  fullDescription  String
+  eyebrow          String
+  symbol           String
+  color            String
+  isPublished      Boolean             @default(false)
+  sortOrder        Int                 @default(0)
+  outcomes         CourseOutcome[]
+  programItems     CourseProgramItem[]
+  teachers         CourseTeacher[]
+  reviews          CourseReview[]
+  prices           CoursePrice[]
+  learningFormats  LearningFormat[]
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+
+  @@index([isPublished, sortOrder])
+}
+
+model CourseOutcome {
+  id        String @id @default(cuid())
+  text      String
+  sortOrder Int    @default(0)
+  courseId  String
+  course    Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
+
+model CourseProgramItem {
+  id        String @id @default(cuid())
+  text      String
+  sortOrder Int    @default(0)
+  courseId  String
+  course    Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
+
+model CourseTeacher {
+  id        String  @id @default(cuid())
+  name      String
+  role      String
+  bio       String
+  photoUrl  String?
+  sortOrder Int     @default(0)
+  courseId  String
+  course    Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
+
+model CourseReview {
+  id        String  @id @default(cuid())
+  author    String
+  text      String
+  rating    Int
+  childAge  String?
+  sortOrder Int     @default(0)
+  courseId  String
+  course    Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
+
+model CoursePrice {
+  id          String  @id @default(cuid())
+  title       String
+  amount      Int
+  currency    String  @default("UAH")
+  period      String
+  description String?
+  sortOrder   Int     @default(0)
+  courseId    String
+  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
+
+model LearningFormat {
+  id              String  @id @default(cuid())
+  title           String
+  description     String
+  durationMinutes Int?
+  groupSize       String?
+  sortOrder       Int     @default(0)
+  courseId        String
+  course          Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, sortOrder])
+}
